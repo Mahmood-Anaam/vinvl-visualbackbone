@@ -11,7 +11,6 @@ cython
 matplotlib
 tqdm
 opencv-python
-numpy==1.21.6
 yacs>=0.1.8
 pycocotools
 cityscapesscripts
@@ -19,3 +18,5 @@ clint
 requests
 torch==1.13.1
 torchvision==0.14.1
+numpy==1.21.6
+
