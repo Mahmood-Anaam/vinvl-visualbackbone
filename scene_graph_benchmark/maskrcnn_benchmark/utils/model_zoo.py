@@ -2,12 +2,14 @@
 import os
 import sys
 
+# Replace the code in /content/vinvl-visualbackbone/scene_graph_benchmark/maskrcnn_benchmark/utils/model_zoo.py
+import torch
 try:
-    from torch.hub import _download_url_to_file
+    from torch.hub import download_url_to_file # Use download_url_to_file instead of _download_url_to_file
     from torch.hub import urlparse
     from torch.hub import HASH_REGEX
 except ImportError:
-    from torch.utils.model_zoo import _download_url_to_file
+    from torch.utils.model_zoo import download_url_to_file # Use download_url_to_file instead of _download_url_to_file
     from torch.utils.model_zoo import urlparse
     from torch.utils.model_zoo import HASH_REGEX
 
