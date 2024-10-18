@@ -62,10 +62,7 @@ class VinVLVisualBackbone(object):
         self.model.to(self.device)
 
 
-        self.checkpointer = DetectronCheckpointer(cfg, self.model, save_dir="")
-        self.checkpointer.load(str(Path(BASE_PATH, cfg.MODEL.WEIGHT)))
-
-        with open(Path(BASE_PATH, cfg.DATASETS.LABELMAP_FILE), "rb") as fp:
+        with open(Path(BASE_PATH, "models/vinvl_vg_x152c4/VG-SGG-dicts-vgoi6-clipped.json"), "rb") as fp:
             label_dict = json.load(fp)
 
         self.idx2label = {int(k): v for k, v in label_dict["idx_to_label"].items()}
