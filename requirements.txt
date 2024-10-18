@@ -11,7 +11,7 @@ cython
 matplotlib
 tqdm
 opencv-python
-numpy>=1.19.5
+numpy==1.21.6
 yacs>=0.1.8
 pycocotools
 cityscapesscripts
