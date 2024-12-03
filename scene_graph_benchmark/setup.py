@@ -59,10 +59,11 @@ def get_extensions():
 setup(
     name="maskrcnn_benchmark",
     version="0.1",
-    author="fmassa",
-    url="https://github.com/facebookresearch/maskrcnn-benchmark",
+    author="Mahmood Anaam",
+    url="https://github.com/Mahmood-Anaam/vinvl-visualbackbone.git",
     description="object detection in pytorch",
     packages=find_packages(exclude=("configs", "tests",)),
+    license="MIT",
     install_requires=[
         "yacs>=0.1.8",
         "cityscapesScripts>=2.2.4",
@@ -71,4 +72,10 @@ setup(
     ],
     ext_modules=get_extensions(),
     cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension},
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.9",
 )
