@@ -63,16 +63,14 @@ class VinVLVisualBackbone(object):
         self.model.to(self.device)
 
         if not Path(Path(BASE_PATH, cfg.MODEL.WEIGHT)).is_file():
-            print(f"{cfg.MODEL.WEIGHT} not found")
             MODEL_DIR.mkdir(parents=True, exist_ok=True)
-            print(f"created {MODEL_DIR} ")
-
+            
             # download the model
             r = requests.get(_MODEL_URL, stream=True)
             path = Path(MODEL_DIR, Path(_MODEL_URL).name)
             with open(path, 'wb') as f:
                 total_length = int(r.headers.get('content-length'))
-                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1):
+                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1,desc=f"downloading {Path(_MODEL_URL).name}"):
                     if chunk:
                         f.write(chunk)
                         f.flush()
@@ -82,7 +80,7 @@ class VinVLVisualBackbone(object):
             path = Path(MODEL_DIR, Path(_LABEL_URL).name)
             with open(path, 'wb') as f:
                 total_length = int(r.headers.get('content-length'))
-                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1):
+                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1,desc=f"downloading {Path(_LABEL_URL).name}"):
                     if chunk:
                         f.write(chunk)
                         f.flush()
