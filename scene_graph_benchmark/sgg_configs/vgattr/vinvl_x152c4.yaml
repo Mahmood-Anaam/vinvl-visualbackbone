@@ -1,7 +1,7 @@
 MODEL:
     META_ARCHITECTURE: "AttrRCNN"
     #WEIGHT: "pretrained_model/gqa/gqa_X152C4_vrdvgvrd_lr0.003_bsz8_objscore005_nooverlap/model_0080000.pth"
-    WEIGHT: "models/vinvl/vinvl_vg_x152c4.pth"
+    WEIGHT: "models/vinvl_vg_x152c4/vinvl_vg_x152c4.pth"
     BACKBONE:
       CONV_BODY: "R-152-C4"
     RESNETS:
@@ -31,7 +31,7 @@ INPUT:
 DATASETS:
 #    FACTORY_TEST: ("ODTSVDataset",)
 #    TEST: ("flickr30k/tsv/flickr30k.yaml",)
-    LABELMAP_FILE: "models/vinvl/VG-SGG-dicts-vgoi6-clipped.json"
+    LABELMAP_FILE: "models/vinvl_vg_x152c4/VG-SGG-dicts-vgoi6-clipped.json"
     TRAIN: ("visualgenome/train_vgoi6_clipped.yaml",)
     TEST: ("visualgenome/test_vgoi6_clipped.yaml",)
     FACTORY_TRAIN: ("VGTSVDataset",)

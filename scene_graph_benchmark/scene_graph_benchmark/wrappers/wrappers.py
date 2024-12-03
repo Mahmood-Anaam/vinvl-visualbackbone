@@ -97,8 +97,7 @@ class VinVLVisualBackbone(object):
         p = str(Path(BASE_PATH, cfg.MODEL.WEIGHT))
         print("ppppppppppppppppppppppppppppppppppppppppppppppppppppp")
         print(p)
-        print(Path(BASE_PATH, cfg.MODEL.WEIGHT))
-        
+       
         self.checkpointer.load(str(Path(BASE_PATH, cfg.MODEL.WEIGHT)))
 
         with open(Path(BASE_PATH, cfg.DATASETS.LABELMAP_FILE), "rb") as fp:
