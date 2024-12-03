@@ -85,6 +85,7 @@ class VinVLVisualBackbone(object):
             print(f"downloading {Path(_LABEL_URL).name}")
             r = requests.get(_LABEL_URL, stream=True)
             path = Path(MODEL_DIR, Path(_LABEL_URL).name)
+            print(f"downloading {Path(_LABEL_URL).name} in {path}")
             with open(path, 'wb') as f:
                 total_length = int(r.headers.get('content-length'))
                 for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
@@ -93,6 +94,11 @@ class VinVLVisualBackbone(object):
                         f.flush()
 
         self.checkpointer = DetectronCheckpointer(cfg, self.model, save_dir="")
+        p = str(Path(BASE_PATH, cfg.MODEL.WEIGHT))
+        print("ppppppppppppppppppppppppppppppppppppppppppppppppppppp")
+        print(p)
+        print(Path(BASE_PATH, cfg.MODEL.WEIGHT))
+        
         self.checkpointer.load(str(Path(BASE_PATH, cfg.MODEL.WEIGHT)))
 
         with open(Path(BASE_PATH, cfg.DATASETS.LABELMAP_FILE), "rb") as fp:
