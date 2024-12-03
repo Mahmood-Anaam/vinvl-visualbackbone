@@ -11,7 +11,6 @@ import torch
 import json
 import cv2
 from pathlib import Path
-from clint.textui import progress
 import requests
 from tqdm import tqdm
 
@@ -68,8 +67,6 @@ class VinVLVisualBackbone(object):
             MODEL_DIR.mkdir(parents=True, exist_ok=True)
             print(f"created {MODEL_DIR} ")
 
-
-            print(f"downloading {Path(_MODEL_URL).name}")
             # download the model
             r = requests.get(_MODEL_URL, stream=True)
             path = Path(MODEL_DIR, Path(_MODEL_URL).name)
@@ -81,7 +78,6 @@ class VinVLVisualBackbone(object):
                         f.flush()
 
             # dowload the labelmap
-            print(f"downloading {Path(_LABEL_URL).name}")
             r = requests.get(_LABEL_URL, stream=True)
             path = Path(MODEL_DIR, Path(_LABEL_URL).name)
             with open(path, 'wb') as f:
