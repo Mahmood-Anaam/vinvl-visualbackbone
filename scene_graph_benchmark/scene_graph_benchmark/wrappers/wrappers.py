@@ -75,7 +75,7 @@ class VinVLVisualBackbone(object):
             path = Path(MODEL_DIR, Path(_MODEL_URL).name)
             with open(path, 'wb') as f:
                 total_length = int(r.headers.get('content-length'))
-                for chunk in tqdm(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
+                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1):
                     if chunk:
                         f.write(chunk)
                         f.flush()
@@ -86,7 +86,7 @@ class VinVLVisualBackbone(object):
             path = Path(MODEL_DIR, Path(_LABEL_URL).name)
             with open(path, 'wb') as f:
                 total_length = int(r.headers.get('content-length'))
-                for chunk in tqdm(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
+                for chunk in tqdm(r.iter_content(chunk_size=1024), total=(total_length / 1024) + 1):
                     if chunk:
                         f.write(chunk)
                         f.flush()
