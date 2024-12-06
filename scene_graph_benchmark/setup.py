@@ -12,7 +12,12 @@ from torch.utils.cpp_extension import CppExtension
 from torch.utils.cpp_extension import CUDAExtension
 
 requirements = ["torch", "torchvision"]
+from setuptools.command.develop import develop
 
+class CustomDevelopCommand(develop):
+    def run(self):
+        os.system("python setup.py build_ext --inplace")
+        super().run()
 
 def get_extensions():
     this_dir = os.path.dirname(os.path.abspath(__file__))
@@ -60,6 +65,9 @@ setup(
     name="maskrcnn_benchmark",
     version="0.1",
     author="Mahmood Anaam",
+    cmdclass={
+        "develop": CustomDevelopCommand,
+    },
     url="https://github.com/Mahmood-Anaam/vinvl-visualbackbone.git",
     description="object detection in pytorch",
     packages=find_packages(exclude=("configs", "tests",)),
