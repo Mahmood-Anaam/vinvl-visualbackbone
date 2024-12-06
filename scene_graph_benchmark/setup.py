@@ -65,9 +65,6 @@ setup(
     name="maskrcnn_benchmark",
     version="0.1",
     author="Mahmood Anaam",
-    cmdclass={
-        "develop": CustomDevelopCommand,
-    },
     url="https://github.com/Mahmood-Anaam/vinvl-visualbackbone.git",
     description="object detection in pytorch",
     packages=find_packages(exclude=("configs", "tests",)),
@@ -96,7 +93,10 @@ setup(
     ],
 
     ext_modules=get_extensions(),
-    cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension},
+    cmdclass={
+        "build_ext": torch.utils.cpp_extension.BuildExtension,
+        "develop": CustomDevelopCommand, 
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
